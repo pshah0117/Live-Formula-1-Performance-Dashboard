@@ -3,9 +3,11 @@ Built with Streamlit & Jolpica F1 API
 A real-time Formula 1 dashboard that delivers live insights into drivers, constructors, race stats, and performance trends — all in one place.
 
 🚦 Overview
+
 This dashboard provides up-to-date Formula 1 data using the Jolpica F1 API, a live-hosted and future-compatible version of the Ergast API that includes 2025 season data and beyond.
 
 📊 Key Features
+
 🧑‍✈️ Driver Standings – Position, points, wins, nationality, and constructor
 
 🏭 Constructor Standings – Position, points, wins, nationality

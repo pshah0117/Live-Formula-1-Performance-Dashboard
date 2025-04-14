@@ -31,17 +31,21 @@ Edit
 pip install -r requirements.txt
 
 # Run the Streamlit app
+
 streamlit run app.py
 **📦 Project Structure**
+
 graphql
 Copy
 Edit
+
 📁 Live-Formula-1-Performance-Dashboard
 ├── app.py               # Main Streamlit app
 ├── data_utils.py        # API data fetching & transformation functions
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project documentation
-📡 API Reference
+
+**📡 API Reference**
 **Jolpica F1 API –**
 🔗 https://api.jolpi.ca
 A hosted version of the Ergast Developer API with added support for the latest F1 seasons.

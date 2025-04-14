@@ -21,8 +21,11 @@ This dashboard provides up-to-date Formula 1 data using the Jolpica F1 API, a li
 🛑 Pit Stop Summary – Lap-wise pit stop data with durations
 
 **🛠️ Run Locally**
+
 bash
+
 Copy
+
 Edit
 # Install dependencies
 pip install -r requirements.txt

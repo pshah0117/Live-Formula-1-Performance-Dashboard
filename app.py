@@ -9,7 +9,10 @@ from data_utils import (
     get_pit_stop_data
 )
 
+# Configure Streamlit page
 st.set_page_config(page_title="F1 Live Dashboard", layout="wide")
+
+# Page Title with current season
 season = get_current_season()
 st.title(f"🏎️ Formula 1 {season} Live Insights Dashboard")
 

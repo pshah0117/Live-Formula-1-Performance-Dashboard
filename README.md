@@ -1,34 +1,42 @@
-Live-Formula-1-Performance-Dashboard
-🏎️ Formula 1 Live Dashboard (Streamlit + Jolpica F1 API)
-This project is a real-time Formula 1 dashboard built with Streamlit and powered by the Jolpica F1 API (a wrapper over the Ergast API that supports current and future seasons like 2025).
+**🏎️ Live Formula 1 Performance Dashboard**
+Built with Streamlit & Jolpica F1 API
+A real-time Formula 1 dashboard that delivers live insights into drivers, constructors, race stats, and performance trends — all in one place.
 
-🚀 Features
-Live Driver Standings with points, wins, nationality, and team
+🚦 Overview
+This dashboard provides up-to-date Formula 1 data using the Jolpica F1 API, a live-hosted and future-compatible version of the Ergast API that includes 2025 season data and beyond.
 
-Live Constructor Standings
+📊 Key Features
+🧑‍✈️ Driver Standings – Position, points, wins, nationality, and constructor
 
-Points Progression for each driver across all races
+🏭 Constructor Standings – Position, points, wins, nationality
 
-Qualifying vs Race Position Delta for the latest race
+📈 Driver Points Progression – Cumulative race-by-race comparison
 
-Fastest Lap Times in the most recent Grand Prix
+🔄 Qualifying vs Race Position Delta – For the most recent race
 
-Pit Stop Summary including lap, stop count, and duration
+⚡ Fastest Lap Times – Per driver in the latest Grand Prix
+
+🛑 Pit Stop Summary – Lap-wise pit stop data with durations
 
 🛠️ Run Locally
 bash
 Copy
 Edit
+# Install dependencies
 pip install -r requirements.txt
-streamlit run app.py
-📡 API Used
-Jolpica F1 API – A live, hosted mirror of the Ergast API, updated for 2025 and beyond.
 
-📁 Project Structure
-bash
+# Run the Streamlit app
+streamlit run app.py
+📦 Project Structure
+graphql
 Copy
 Edit
-├── app.py               # Streamlit app
-├── data_utils.py        # Data-fetching utility functions
-├── requirements.txt     # Dependencies
-└── README.md            # Project info
+📁 Live-Formula-1-Performance-Dashboard
+├── app.py               # Main Streamlit app
+├── data_utils.py        # API data fetching & transformation functions
+├── requirements.txt     # Python dependencies
+└── README.md            # Project documentation
+📡 API Reference
+Jolpica F1 API –
+🔗 https://api.jolpi.ca
+A hosted version of the Ergast Developer API with added support for the latest F1 seasons.

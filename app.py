@@ -10,7 +10,7 @@ from data_utils import (
 )
 
 # Configure Streamlit page
-st.set_page_config(page_title="F1 Live Dashboard", layout="wide")
+st.set_page_config(page_title="F1 Live Performance Dashboard", layout="wide")
 
 # Page Title with current season
 season = get_current_season()

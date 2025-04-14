@@ -1,18 +1,22 @@
 import requests
 import pandas as pd
 
+BASE_URL = "https://api.jolpi.ca/ergast/f1"
+
 # 1. Get current F1 season
 def get_current_season():
-    url = "https://ergast.com/api/f1/current.json"
+    url = f"{BASE_URL}/current.json"
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
     season = data['MRData']['RaceTable']['season']
     return season
 
 # 2. Get current driver standings
 def get_current_driver_standings():
-    url = "https://ergast.com/api/f1/current/driverStandings.json"
+    url = f"{BASE_URL}/current/driverStandings.json"
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
 
     standings = data['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings']
@@ -20,22 +24,23 @@ def get_current_driver_standings():
     drivers = []
     for s in standings:
         driver = s['Driver']
-        constructors = s['Constructors'][0]
+        constructor = s['Constructors'][0]
         drivers.append({
             'Position': int(s['position']),
             'Driver': f"{driver['givenName']} {driver['familyName']}",
             'Points': int(float(s['points'])),
             'Wins': int(s['wins']),
             'Nationality': driver['nationality'],
-            'Constructor': constructors['name']
+            'Constructor': constructor['name']
         })
         
     return pd.DataFrame(drivers)
 
 # 3. Get current constructor standings
 def get_current_constructor_standings():
-    url = "https://ergast.com/api/f1/current/constructorStandings.json"
+    url = f"{BASE_URL}/current/constructorStandings.json"
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
 
     standings = data['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
@@ -55,8 +60,9 @@ def get_current_constructor_standings():
 
 # 4. Get driver cumulative points by race
 def get_driver_points_by_race():
-    url = "https://ergast.com/api/f1/current/results.json?limit=1000"
+    url = f"{BASE_URL}/current/results.json?limit=1000"
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
 
     races = data['MRData']['RaceTable']['Races']
@@ -95,14 +101,12 @@ def get_driver_points_by_race():
 
 # 5. Get qualifying vs race position delta for last race
 def get_qualifying_vs_race_delta():
-    # First, get the last race round
-    last_race_url = "https://ergast.com/api/f1/current/last.json"
+    last_race_url = f"{BASE_URL}/current/last.json"
     race_resp = requests.get(last_race_url).json()
     round_num = race_resp['MRData']['RaceTable']['round']
 
-    # Get race results
-    race_results_url = f"https://ergast.com/api/f1/current/{round_num}/results.json"
-    qual_results_url = f"https://ergast.com/api/f1/current/{round_num}/qualifying.json"
+    race_results_url = f"{BASE_URL}/current/{round_num}/results.json"
+    qual_results_url = f"{BASE_URL}/current/{round_num}/qualifying.json"
 
     race_data = requests.get(race_results_url).json()
     qual_data = requests.get(qual_results_url).json()
@@ -119,8 +123,7 @@ def get_qualifying_vs_race_delta():
 
     deltas = []
     for driver in qual_pos:
-        delta = race_pos.get(driver, None)
-        if delta is not None:
+        if driver in race_pos:
             deltas.append({
                 'Driver': driver,
                 'Qualifying': qual_pos[driver],
@@ -132,8 +135,9 @@ def get_qualifying_vs_race_delta():
 
 # 6. Get fastest lap times from last race
 def get_fastest_lap_times():
-    url = "https://ergast.com/api/f1/current/last/results.json"
+    url = f"{BASE_URL}/current/last/results.json"
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
 
     laps = []
@@ -148,14 +152,15 @@ def get_fastest_lap_times():
 
 # 7. Get pit stop data for the last race
 def get_pit_stop_data():
-    race_info = requests.get("https://ergast.com/api/f1/current/last.json").json()
+    race_info = requests.get(f"{BASE_URL}/current/last.json").json()
     round_num = race_info['MRData']['RaceTable']['round']
 
-    url = f"https://ergast.com/api/f1/current/{round_num}/pitstops.json?limit=1000"
+    url = f"{BASE_URL}/current/{round_num}/pitstops.json?limit=1000"
     response = requests.get(url)
+    response.raise_for_status()
     data = response.json()
 
-    stops = data['MRData']['RaceTable']['Races'][0]['PitStops']
+    stops = data['MRData']['RaceTable']['Races'][0].get('PitStops', [])
     result = [{
         "Driver": s['driverId'].capitalize(),
         "Lap": int(s['lap']),

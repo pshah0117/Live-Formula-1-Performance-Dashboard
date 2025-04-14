@@ -1,32 +1,33 @@
-# **🏎️ Live Formula 1 Performance Dashboard**
-Built with Streamlit & Jolpica F1 API
+# 🏎️ Live Formula 1 Performance Dashboard
+
+**Built with Streamlit & Jolpica F1 API**  
 A real-time Formula 1 dashboard that delivers live insights into drivers, constructors, race stats, and performance trends — all in one place.
 
-**🚦 Overview**
+---
 
-This dashboard provides up-to-date Formula 1 data using the Jolpica F1 API, a live-hosted and future-compatible version of the Ergast API that includes 2025 season data and beyond.
+## 🚦 Overview
 
-**📊 Key Features**
+This dashboard provides up-to-date Formula 1 data using the **Jolpica F1 API**, a live-hosted and future-compatible version of the Ergast API that includes **2025 season data and beyond**.
 
-🧑‍✈️ Driver Standings – Position, points, wins, nationality, and constructor
+---
 
-🏭 Constructor Standings – Position, points, wins, nationality
+## 📊 Key Features
 
-📈 Driver Points Progression – Cumulative race-by-race comparison
+- 🧑‍✈️ **Driver Standings** – Position, points, wins, nationality, and constructor  
+- 🏭 **Constructor Standings** – Position, points, wins, nationality  
+- 📈 **Driver Points Progression** – Cumulative race-by-race comparison  
+- 🔄 **Qualifying vs Race Position Delta** – For the most recent race  
+- ⚡ **Fastest Lap Times** – Per driver in the latest Grand Prix  
+- 🛑 **Pit Stop Summary** – Lap-wise pit stop data with durations
 
-🔄 Qualifying vs Race Position Delta – For the most recent race
+---
 
-⚡ Fastest Lap Times – Per driver in the latest Grand Prix
+## 🛠️ Run Locally
 
-🛑 Pit Stop Summary – Lap-wise pit stop data with durations
-
-**🛠️ Run Locally**
-
-bash
-
-Copy
-
-Edit
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 # Install dependencies
 pip install -r requirements.txt
 

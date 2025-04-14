@@ -28,7 +28,7 @@ This dashboard provides up-to-date Formula 1 data using the **Jolpica F1 API**, 
 pip install -r requirements.txt
 streamlit run app.py
 ```
-# Install dependencies
+## Install dependencies
 pip install -r requirements.txt
 
 ## 🚀 Run the Streamlit App
